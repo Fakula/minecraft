@@ -1,0 +1,26 @@
+package com.example.myfirstmod;
+
+import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+
+@Mod("myfirstmod")
+public class MyFirstMod {
+    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, "myfirstmod");
+
+    public MyFirstMod() {
+        BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    }
+
+    static {
+        BLOCKS.register("wasteland_block", () -> new FallingBlock(AbstractBlock.Properties.create(Material.EARTH).hardnessAndResistance(0.5F, 0.5F)));
+    }
+
+    private void setup(final FMLClientSetupEvent event) {
+        // Hier können Sie Code hinzufügen, der auf der Client-Seite ausgeführt werden soll, z.B. das Registrieren von Renderern.
+    }
+}
